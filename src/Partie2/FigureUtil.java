@@ -124,6 +124,8 @@ public class FigureUtil {
 		}
 		return null;
 	}
+	
+	
 
 	private Point getRandomPoint() {
 		int x = numberRandom(min, max);

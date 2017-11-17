@@ -13,4 +13,5 @@ public abstract class Figure {
 	public abstract boolean covers(Point p);
 	
 	public abstract Point getCenter(); 
+	
 }

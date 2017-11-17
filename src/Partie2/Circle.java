@@ -50,4 +50,10 @@ public class Circle extends Figure implements Surfacable {
 		return getCenter().distance(p) <= getRadius();
 	}
 
+	@Override
+	public boolean equals(Object figure) {
+		
+		return (((Circle) figure).getCenter() == this.getCenter() && ((Circle) figure).getRadius() == this.getRadius());
+	}
+
 }

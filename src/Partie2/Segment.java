@@ -4,7 +4,7 @@ package Partie2;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class Segment extends Figure {
+public class Segment extends Figure implements Surfacable {
 
 	private Point start;
 	private Point end;
@@ -66,5 +66,17 @@ public class Segment extends Figure {
 		int x = (getPointStart().getX() + getPointEnd().getX()) / 2;
 		int y = (getPointStart().getY() + getPointEnd().getY()) / 2;
 		return new Point(x, y);
+	}
+
+	@Override
+	public double surface() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean equals(Object figure) {
+		
+		return (((Segment) figure).getPointStart() == this.getPointStart() && ((Segment) figure).getPointEnd() == this.getPointEnd());
 	}
 }

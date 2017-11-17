@@ -90,4 +90,12 @@ public class Rectangle extends Figure implements Surfacable {
 		return new Point(x, y);
 	}
 
+	@Override
+	public boolean equals(Object figure) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
 }
