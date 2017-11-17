@@ -14,4 +14,12 @@ public abstract class Figure {
 	
 	public abstract Point getCenter(); 
 	
+/*	public double distanceOrigin() {
+		
+	};
+	
+	public int compareTo(Figure f) {
+		
+	} */
+	
 }

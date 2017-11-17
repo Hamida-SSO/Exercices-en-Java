@@ -48,8 +48,9 @@ public class Rectangle extends Figure implements Surfacable {
 
 	@Override
 	public double surface() {
-		// TODO Auto-generated method stub
-		return 0;
+		int lengths = (this.getPointBottomRight().getX() + this.getPointTopLeft().getX()) / 2;
+		int widths  = (this.getPointBottomRight().getY() + this.getPointTopLeft().getY()) / 2;
+		return widths * lengths;
 	}
 
 	@Override

@@ -30,8 +30,8 @@ public class Circle extends Figure implements Surfacable {
 
 	@Override
 	public double surface() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return this.radius * this.radius * Math.PI;
 	}
 
 	public Collection<Point> getPoints() {
@@ -53,7 +53,7 @@ public class Circle extends Figure implements Surfacable {
 	@Override
 	public boolean equals(Object figure) {
 		
-		return (((Circle) figure).getCenter() == this.getCenter() && ((Circle) figure).getRadius() == this.getRadius());
+		return (((Circle) figure).getCenter().equals(this.getCenter()) && ((Circle) figure).getRadius() == this.getRadius());
 	}
 
 }
