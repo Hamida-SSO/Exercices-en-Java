@@ -1,8 +1,9 @@
 package Partie2;
 
-
 import java.util.Collection;
 import java.util.HashSet;
+
+import Partie3.Color;
 
 public class Segment extends Figure implements Surfacable {
 
@@ -10,11 +11,19 @@ public class Segment extends Figure implements Surfacable {
 	private Point end;
 	private int lengths;
 	private boolean type;
+	private Color color;
 
 	public Segment(Point p, int l, boolean h) {
 		this.type = h;
 		this.lengths = l;
 		this.start = p;
+		this.setColor(Color.getColorDefault());
+	}
+
+	public Segment(Point p, int l, boolean h, Color c) {
+
+		this(p, l, h);
+		this.color = c;
 	}
 
 	public Point getPointStart() {
@@ -30,7 +39,7 @@ public class Segment extends Figure implements Surfacable {
 	}
 
 	public String toString() {
-		return "[ SEG " + getPointStart() + getPointEnd() + "]";
+		return "[ SEG " + getPointStart() + getPointEnd() + "]" + "COLOR : " + this.color;
 	}
 
 	public Collection<Point> getPoints() {
@@ -47,17 +56,16 @@ public class Segment extends Figure implements Surfacable {
 	@Override
 	public boolean covers(Point p) {
 		// if type == horizontal
-		if(type) {
-			if((p.getX() >= this.getPointStart().getX()) && (p.getX() <= this.getPointEnd().getX())) {
+		if (type) {
+			if ((p.getX() >= this.getPointStart().getX()) && (p.getX() <= this.getPointEnd().getX())) {
+				return true;
+			}
+		} else {
+			if ((p.getY() >= this.getPointStart().getY()) && (p.getY() <= this.getPointEnd().getY())) {
 				return true;
 			}
 		}
-		else {
-			if((p.getY() >= this.getPointStart().getY()) && (p.getY() <= this.getPointEnd().getY())) {
-				return true;
-			}
-		}
-		
+
 		return false;
 	}
 
@@ -76,7 +84,16 @@ public class Segment extends Figure implements Surfacable {
 
 	@Override
 	public boolean equals(Object figure) {
-		
-		return (((Segment) figure).getPointStart() == this.getPointStart() && ((Segment) figure).getPointEnd() == this.getPointEnd());
+
+		return (((Segment) figure).getPointStart() == this.getPointStart()
+				&& ((Segment) figure).getPointEnd() == this.getPointEnd());
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 }

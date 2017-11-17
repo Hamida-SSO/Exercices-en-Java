@@ -3,16 +3,25 @@ package Partie2;
 import java.util.Collection;
 import java.util.HashSet;
 
+import Partie3.Color;
+
 public class Rectangle extends Figure implements Surfacable {
 
 	private Point pointBottomRight, pointBottomLeft, pointTopRight, pointTopLeft;
 	private int lengths;
 	private int widths;
+	private Color color;
 
 	public Rectangle(Point p, int l, int w) {
 		pointBottomLeft = p;
 		lengths = l;
 		widths = w;
+		this.setColor(Color.getColorDefault());
+	}
+	
+	public Rectangle(Point p, int l, int w, Color c) {
+		this(p,l,w);
+		this.color = c;
 	}
 
 	public int getLength() {
@@ -43,7 +52,7 @@ public class Rectangle extends Figure implements Surfacable {
 	}
 
 	public String toString() {
-		return "[ RECT " + getPointBottomLeft() + getPointTopLeft() + getPointBottomRight() + getPointTopRight() + "]";
+		return "[ RECT " + getPointBottomLeft() + getPointTopLeft() + getPointBottomRight() + getPointTopRight() + "]"  + "COLOR : " + this.color;
 	}
 
 	@Override
@@ -95,6 +104,14 @@ public class Rectangle extends Figure implements Surfacable {
 	public boolean equals(Object figure) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 

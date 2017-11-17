@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import Partie3.Color;
 
 public class FigureUtil {
 
@@ -18,8 +19,9 @@ public class FigureUtil {
 
 		Point point = getRandomPoint();
 		int radius = numberRandom(min, max);
+		Color color = getRandomColor();
 
-		return new Circle(point, radius);
+		return new Circle(point, radius, color);
 	}
 
 	public Rectangle getRandomRectangle() {
@@ -27,16 +29,18 @@ public class FigureUtil {
 		Point point = getRandomPoint();
 		int widhts = numberRandom(min, max);
 		int lenghts = numberRandom(min, max);
+		Color color = getRandomColor();
 
-		return new Rectangle(point, lenghts, widhts);
+		return new Rectangle(point, lenghts, widhts, color);
 	}
 
 	public Rectangle getRandomCarre() {
 
 		Point point = getRandomPoint();
 		int size = numberRandom(min, max);
+		Color color = getRandomColor();
 
-		return new Rectangle(point, size, size);
+		return new Rectangle(point, size, size, color);
 	}
 
 	public Segment getRandomSegment() {
@@ -44,16 +48,17 @@ public class FigureUtil {
 		int size = numberRandom(min, max);
 		int number = numberRandom(0, 1);
 		boolean what = false;
+		Color color = getRandomColor();
 
 		if (number == 1) {
 			what = true;
 		}
 
-		return new Segment(point, size, what);
+		return new Segment(point, size, what,color);
 	}
 
 	public Figure getRandomFigure() {
-		int choice = numberRandom(0, 3);
+		int choice = numberRandom(0, 4);
 
 		switch (choice) {
 		case 0:
@@ -73,7 +78,7 @@ public class FigureUtil {
 	}
 
 	public Surfacable getRandomSurfacable() {
-		int choice = numberRandom(0, 2);
+		int choice = numberRandom(0, 3);
 
 		switch (choice) {
 		case 0:
@@ -87,47 +92,62 @@ public class FigureUtil {
 		}
 
 	}
-	
+
 	// A revoir par rapport à la correction
 	public ArrayList<Figure> generate(int number) {
 		int i;
 		ArrayList<Figure> figures = new ArrayList<>();
-		
-		for(i=0; i<= number; i++) {
-			 figures.add(getRandomFigure()); // number figure car ArrayList accepte les doublons
+
+		for (i = 0; i <= number; i++) {
+			figures.add(getRandomFigure()); // number figure car ArrayList accepte les doublons
 		}
-		
+
 		return figures;
 	}
-	
+
 	public Collection<Figure> getPoints(ArrayList<Figure> figures) {
-		
+
 		int size = figures.size();
 		Collection<Figure> listPoints = new ArrayList<>();
-		
-		while(size !=0) {
+
+		while (size != 0) {
 			((ArrayList<Figure>) listPoints).get(size).getPoints();
 			size--;
 		}
-		
+
 		return listPoints;
 	}
-	
+
 	public static Figure getFigureEn(Point p, Picture d) {
 		Iterator<Figure> iterator = d.getFigures().iterator();
-		
-		while(iterator.hasNext()) {
+
+		while (iterator.hasNext()) {
 			Figure f = iterator.next();
-			if(f.covers(p)) {
+			if (f.covers(p)) {
 				return f;
 			}
 		}
 		return null;
 	}
-	
-	
 
-	private Point getRandomPoint() {
+	public Color getRandomColor() {
+		int number = numberRandom(0, 5);
+		switch (number) {
+		case 0:
+			return Color.Red;
+		case 1:
+			return Color.Green;
+		case 2:
+			return Color.Blue;
+		case 3:
+			return Color.Yellow;
+		default:
+			return Color.Black;
+		}
+	}
+	//TODO teste les couleurs sur deux figures
+
+	public Point getRandomPoint() {
 		int x = numberRandom(min, max);
 		int y = numberRandom(min, max);
 		return new Point(x, y);

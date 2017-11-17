@@ -2,6 +2,8 @@ package Partie2;
 
 import java.util.Collection;
 
+import Partie3.Color;
+
 public abstract class Figure {
 	
 	public void display() {
@@ -21,5 +23,9 @@ public abstract class Figure {
 	public int compareTo(Figure f) {
 		
 	} */
+	
+	public Color getColor() {
+		return Color.getColorDefault();
+	};
 	
 }
