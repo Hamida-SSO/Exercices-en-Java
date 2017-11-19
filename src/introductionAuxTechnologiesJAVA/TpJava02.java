@@ -1,9 +1,14 @@
-package Partie1;
+package introductionAuxTechnologiesJAVA;
 
-public class TpJava02 {
+public abstract class TpJava02 {
+	
+	/* ================================== 
+	 * 	Conversion & Primitives
+	 * ===================================
+	 * */
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Les problèmes de conversions qu'on peut rencontrer
 	
 		int val = 1234;
 		float valF = val;
@@ -27,6 +32,10 @@ public class TpJava02 {
 		System.out.println("\n" + b);
 		System.out.println("\n" + c);
 		System.out.println("\n" + autre);
+		
+		long test = Long.MAX_VALUE;
+		System.out.println(test);
+		System.out.println(test+2);
 		
 		
 		
